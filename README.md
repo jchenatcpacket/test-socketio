@@ -1,0 +1,2 @@
+# replicate socketio 404 error
+explanation: socket-io server on mounted on a different path under http framework(default socket-io path is /socket.io). socket-client needs to configure the path to connect to socket-io server, otherwise you get 404 polling error
