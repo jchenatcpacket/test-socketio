@@ -7,6 +7,14 @@ services:
     ports:
       - "8000:8000"
 
+  sanic:
+    build: ./sanic
+    command: uvicorn --host 0.0.0.0 --port 8003 main:socketio_app
+    volumes:
+      - ./sanic:/server
+    ports:
+      - "8003:8003"
+
   client:
     build: ./client
     command: node main.js

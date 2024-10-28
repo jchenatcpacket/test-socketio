@@ -1,8 +1,7 @@
 const { io } = require("socket.io-client");
 
-const socket = io("http://server:8000", {
-    path: "/test_sio/socket.io"
-})
+// const socket = io("http://server:8000")
+const socket = io("http://sanic:8003")
 
 socket.on("connect", () => {
     console.log(socket.id);

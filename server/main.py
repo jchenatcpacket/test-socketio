@@ -12,9 +12,9 @@ def read_root():
 
 # mgr = socketio.AsyncRedisManager('redis://')
 sio = socketio.AsyncServer(async_mode='asgi', cors_allowed_origins='*')
-sio_app = socketio.ASGIApp(sio, socketio_path="/test_sio/socket.io")
+sio_app = socketio.ASGIApp(sio)
 
-app.mount("/test_sio", sio_app)
+app.mount("/", sio_app)
 
 @sio.event
 async def my_event(sid, data):
