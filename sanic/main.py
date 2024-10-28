@@ -1,6 +1,7 @@
 from sanic import Sanic
 from sanic.response import text
 import socketio
+import uvicorn
 
 sio = socketio.AsyncServer(async_mode='asgi')
 sanic_app = Sanic(__name__)
@@ -39,3 +40,6 @@ async def connect(sid, environ):
 @sio.event
 def disconnect(sid):
     print('Client disconnected')
+
+if __name__ == "__main__":
+    uvicorn.run(socketio_app, host="0.0.0.0", port=8003, log_level="info")
