@@ -11,8 +11,8 @@ def read_root():
     return {"Hello": "World"}
 
 # mgr = socketio.AsyncRedisManager('redis://')
-sio = socketio.AsyncServer(async_mode='asgi')
-sio_app = socketio.ASGIApp(sio)
+sio = socketio.AsyncServer(async_mode='asgi', cors_allowed_origins='*')
+sio_app = socketio.ASGIApp(sio, socketio_path="/test_sio/socket.io")
 
 app.mount("/test_sio", sio_app)
 

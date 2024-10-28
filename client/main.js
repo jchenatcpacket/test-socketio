@@ -1,9 +1,7 @@
 const { io } = require("socket.io-client");
 
-
-const server_socket_path = "test_sio"
 const socket = io("http://server:8000", {
-    path: `/${server_socket_path}/socket.io`
+    path: "/test_sio/socket.io"
 })
 
 socket.on("connect", () => {
@@ -13,6 +11,7 @@ socket.on("connect", () => {
 socket.on("disconnect", () => {
     console.log(socket.id);
 });
+
 
 socket.on('my event', (data) => {
     console.log('Received message:', data);
