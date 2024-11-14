@@ -10,7 +10,8 @@ services:
   sanic:
     build: ./sanic
     # command: uvicorn --host 0.0.0.0 --port 8003 main:socketio_app
-    command: python main.py
+    # command: python main.py
+    command: tail -f /dev/null 
     volumes:
       - ./sanic:/server
     ports:
