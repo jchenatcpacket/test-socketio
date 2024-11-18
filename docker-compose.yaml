@@ -14,6 +14,12 @@ services:
       - ./server:/server
     ports:
       - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://server:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   # sanic:
   #   build: ./sanic
@@ -28,4 +34,6 @@ services:
     build: ./client
     command: node main.js
     depends_on:
-      - server
+        server:
+            condition: service_healthy
+            restart: true

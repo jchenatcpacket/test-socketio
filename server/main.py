@@ -2,13 +2,17 @@ import time
 import asyncio
 
 import socketio
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 
 app = FastAPI()
 
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
+
+@app.get("/health")
+def healthcheck():
+    return Response(status_code=200)
 
 # mgr = socketio.AsyncRedisManager('redis://')
 sio = socketio.AsyncServer(async_mode='asgi', cors_allowed_origins='*')
