@@ -1,29 +1,29 @@
 const { io } = require("socket.io-client");
 
-// const socket = io("http://server:8000")
-const socket = io("http://sanic:8003")
+const socket = io("http://server:8000")
+// const socket = io("http://sanic:8003")
 
 socket.on("connect", () => {
-    console.log(socket.id);
+    console.log(`[${new Date().toISOString()}]`, socket.id);
 });
 
 socket.on("disconnect", () => {
-    console.log(socket.id);
+    console.log(`[${new Date().toISOString()}]`,socket.id);
 });
 
 
 socket.on('my event', (data) => {
-    console.log('Received message:', data);
+    console.log(`[${new Date().toISOString()}]`, 'Received message:', data);
 });
 
 socket.io.on("error", (error) => {
-    console.log(error)
+    console.log(`[${new Date().toISOString()}]`, error)
 });
 
 socket.on("connect_error", (error) => {
     if (socket.active) {
-        console.log("active connection");
+        console.log(`[${new Date().toISOString()}]`, "active connection");
     } else {
-      console.log(error.message);
+      console.log(`[${new Date().toISOString()}]`, error.message);
     }
 });
