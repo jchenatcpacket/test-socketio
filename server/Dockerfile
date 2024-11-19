@@ -1,5 +1,7 @@
 FROM python:3.9-slim-bookworm
 
+RUN apt update && apt install curl -y
+
 ENV PYTHONDONTWRITEBYTECODE=1
 
 WORKDIR /server
