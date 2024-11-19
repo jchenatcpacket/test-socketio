@@ -20,7 +20,6 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
-
   # sanic:
   #   build: ./sanic
   #   # command: uvicorn --host 0.0.0.0 --port 8003 main:socketio_app
@@ -29,7 +28,6 @@ services:
   #     - ./sanic:/server
   #   ports:
   #     - "8003:8003"
-
   client:
     build: ./client
     command: node main.js
