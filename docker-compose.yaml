@@ -2,14 +2,15 @@ services:
   server:
     build: ./server
     # command: uvicorn main:app --host 0.0.0.0 --port 8000 --workers 1 --loop asyncio
-    command: >
-      sh -c "
-        echo 'Waiting 30 seconds before starting...' &&
-        sleep 30 &&
-        echo 'Starting main process...' &&
-        # Your actual command goes here
-        uvicorn main:app --host 0.0.0.0 --port 8000 --workers 1 --loop asyncio
-      "
+    # command: >
+    #   sh -c "
+    #     echo 'Waiting 30 seconds before starting...' &&
+    #     sleep 30 &&
+    #     echo 'Starting main process...' &&
+    #     # Your actual command goes here
+    #     uvicorn main:app --host 0.0.0.0 --port 8000 --workers 1 --loop asyncio
+    #   "
+    command: tail -f /dev/null
     volumes:
       - ./server:/server
     ports:

@@ -6,6 +6,8 @@ ENV PYTHONDONTWRITEBYTECODE=1
 
 WORKDIR /server
 
-RUN pip install python-socketio[asyncio]
-RUN pip install fastapi[standard]
-RUN pip install uvicorn
+RUN pip install \
+    python-socketio[asyncio] \
+    fastapi[standard] \
+    uvicorn \
+    pytest
