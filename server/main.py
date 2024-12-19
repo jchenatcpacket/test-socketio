@@ -23,7 +23,7 @@ app.mount("/", sio_app)
 @sio.event
 async def my_event(sid, data):
     print("session id", sid)
-    print("data", data)
+    # print("data", data)
 
 @sio.on('my custom event')
 async def another_event(sid, data):
